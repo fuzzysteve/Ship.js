@@ -1,3 +1,7 @@
+Ship.js is a simple javascript library, to easily add ship fits to pages, where you may not be able to get at the underlying code.
+
+It depends on a php page to decode the ship dna into a useable form, which can be called from anywhere. A copy runs on my personal server, and I'm not planning on taking it down any time soon.
+
 
 
 Installing this into wordpress:
