@@ -76,7 +76,7 @@ foreach ( $array as $value)
     }
 }
 $json=array();
-$json["ship"]=array("shipname"=>$shiptype,"shipid"=>$shipid);
+$json["ship"]=array("shipname"=>$shiptype,"shipid"=>$shipid,"dna"=>$dna);
 $json["high"]=$high;
 $json["medium"]=$med;
 $json["low"]=$low;

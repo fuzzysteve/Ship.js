@@ -7,14 +7,14 @@ lowslot=["left: 228px; top: 355px", "left: 267px; top: 343px", "left: 300px; top
 rigslot=["left: 120px; top: 228px", "left: 150px; top: 263px", "left: 192px; top: 276px"];
 subsystem=["left: 122px; top: 163px","left: 153px; top: 130px","left: 195px; top: 115px","left: 241px; top: 129px","left: 270px; top: 165px"];
 
-displayship="<div id='loadoutBg' style='background-image: url(http://www.fuzzwork.co.uk/ships/fitting.png); height: 420px; width: 420px; position: relative;' onclick=\"CCPEVE.showFitting('"+dna+"')\">'";
 
 
     var Url = "http://www.fuzzwork.co.uk/ships/parsedna.php?dna="+dna;
 
 jQuery.get(Url,function(json){
 
-    shipdisplay=displayship+"<div class='shippic' style='position: absolute; height: 64px; width:64px; left: 178px; top:178px;'><img src='http://image.eveonline.com/InventoryType/"+json["ship"]["shipid"]+"_64.png' title='"+json["ship"]["shipname"]+"'></div>";
+    shipdisplay="<div id='loadoutBg' style='background-image: url(http://www.fuzzwork.co.uk/ships/fitting.png); height: 420px; width: 420px; position: relative;' onclick=\"CCPEVE.showFitting('"+json["ship"]["dna"]+"')\">'";
+    shipdisplay=shipdisplay+"<div class='shippic' style='position: absolute; height: 64px; width:64px; left: 178px; top:178px;'><img src='http://image.eveonline.com/InventoryType/"+json["ship"]["shipid"]+"_64.png' title='"+json["ship"]["shipname"]+"'></div>";
 
 
     slot=1;
