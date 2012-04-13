@@ -5,17 +5,16 @@ highslot=["left: 75px; top: 90px", "left: 105px; top: 65px", "left: 140px; top: 
 medslot=["left: 45px; top: 142px", "left: 37px; top: 180px", "left: 38px; top: 220px", "left: 49px; top: 257px", "left: 69px; top: 290px", "left: 100px; top:315px", "left: 128px; top: 332px", "left: 165px; top: 347px"];
 lowslot=["left: 228px; top: 355px", "left: 267px; top: 343px", "left: 300px; top: 320px", "left: 328px; top: 292px", "left: 345px; top: 260px", "left: 355px; top: 223px", "left: 353px; top: 185px", "left: 350px; top: 145px"]; 
 rigslot=["left: 120px; top: 228px", "left: 150px; top: 263px", "left: 192px; top: 276px"];
+subsystem=["left: 122px; top: 163px","left: 153px; top: 130px","left: 195px; top: 115px","left: 241px; top: 129px","left: 270px; top: 165px"];
 
-
-shipdisplay="<div id='loadoutBg' style='background-image: url(http://www.fuzzwork.co.uk/ships/fitting.png); height: 420px; width: 420px; position: relative;'>'";
+displayship="<div id='loadoutBg' style='background-image: url(http://www.fuzzwork.co.uk/ships/fitting.png); height: 420px; width: 420px; position: relative;' onclick=\"CCPEVE.showFitting('"+dna+"')\">'";
 
 
     var Url = "http://www.fuzzwork.co.uk/ships/parsedna.php?dna="+dna;
 
 jQuery.get(Url,function(json){
-//    json=JSON.parse(jsonreturn);
 
-    shipdisplay=shipdisplay+"<div class='shippic' style='position: absolute; height: 64px; width:64px; left: 178px; top:178px;'><img src='http://image.eveonline.com/InventoryType/"+json["ship"]["shipid"]+"_64.png' title='"+json["ship"]["shipname"]+"'></div>";
+    shipdisplay=displayship+"<div class='shippic' style='position: absolute; height: 64px; width:64px; left: 178px; top:178px;'><img src='http://image.eveonline.com/InventoryType/"+json["ship"]["shipid"]+"_64.png' title='"+json["ship"]["shipname"]+"'></div>";
 
 
     slot=1;
@@ -87,6 +86,20 @@ jQuery.get(Url,function(json){
         }
    }
 
+ slot=1;
+    for (var i = 0; i < json["subsystem"].length; i++)
+    {
+
+        for (var key  in json["subsystem"][i])
+        {
+            for (var num=0; num<json["subsystem"][i][key];num++)
+            {
+                parts=key.split(':');
+            shipdisplay+="<div class='subsystem"+slot+"' style='position: absolute; height: 32px;"+subsystem[slot-1]+"'><img src='http://image.eveonline.com/InventoryType/"+parts[1]+"_32.png' title='"+parts[0]+"'></div>";
+            slot++;
+            }
+        }
+   }
 
 shipdisplay+="</div>";
 

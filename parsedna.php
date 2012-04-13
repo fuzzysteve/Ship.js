@@ -70,7 +70,7 @@ foreach ( $array as $value)
             $rig[]=array($typenames[$types[0]].":".$types[0]=>(int)$types[1]);
             break;
         case 3772:
-            $subsystem[]=array($typenames[$types[0]].":".$types[0]=>(int)$types[1]);
+            $subsystem[]=array($typenames[$types[0]].":".$types[0]=>1);
             break;
         } 
     }
