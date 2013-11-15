@@ -9,7 +9,7 @@ subsystem=["left: 122px; top: 163px","left: 153px; top: 130px","left: 195px; top
 
 
 
-    var Url = "http://www.fuzzwork.co.uk/ships/parsedna.php?dna="+dna;
+    var Url = "https://www.fuzzwork.co.uk/ships/parsedna.php?dna="+dna;
 
 jQuery.get(Url,function(json){
 

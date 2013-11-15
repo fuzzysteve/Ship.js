@@ -1,7 +1,7 @@
 <html>
 <head>
 <title>Ship DNA Generator</title>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
 <script src='ship.js'></script>
 
 </head>
@@ -31,7 +31,18 @@ $mods[$shipname]=1;
 $inner=array_shift($fittingarray);
 foreach ($fittingarray as $line)
 {
-    if (!preg_match('/\[/',$line))
+    if (preg_match('/^(.*) x(\d+)$/',trim($line),$matches))
+    {
+        if(array_key_exists($matches[1],$mods))
+        {
+            $mods[$matches[1]]+=$matches[2];
+        }
+        else
+        {
+            $mods[$matches[1]]=$matches[2];
+        }
+    }
+    else if (!preg_match('/\[/',$line))
     {
         $line=trim($line);
         $moduledetail=explode(",",$line,2);
@@ -45,13 +56,13 @@ foreach ($fittingarray as $line)
         }
         if (array_key_exists(1,$moduledetail))
         {
-            if(array_key_exists($moduledetail[1],$mods))
+            if(array_key_exists(trim($moduledetail[1]),$mods))
             {
-                $mods[$moduledetail[1]]++;
+                $mods[trim($moduledetail[1])]++;
             }
             else
             {
-                $mods[$moduledetail[1]]=1;
+                $mods[trim($moduledetail[1])]=1;
             }
         }
     }
@@ -68,7 +79,7 @@ $low=array();
 $subsystem=array();
 $ammo=array();
 $rig=array();
-
+$drones=array();
 
 
 foreach ($mods as $module=>$number)
@@ -93,6 +104,9 @@ foreach ($mods as $module=>$number)
         case 13:
             $med[$row->typeid]=(int)$number;
             break;
+        case 18:
+            $drones[$row->typeid]=(int)$number;
+            break;
         case 2663:
             $rig[$row->typeid]=(int)$number;
             break;
@@ -106,7 +120,11 @@ foreach ($mods as $module=>$number)
 
 $dna=$shipid.":";
 
-$dna.=join(":",array_keys($subsystem));
+
+foreach ($subsystem as $module=>$number)
+{ 
+$dna.=$module.";".$number.":";
+}
 $dna=trim($dna,":").":";
 
 foreach ($high as $module=>$number)
@@ -129,12 +147,16 @@ foreach ($rig as $module=>$number)
 $dna.=$module.";".$number.":";
 }
 $dna=trim($dna,":").":";
-foreach ($ammo as $module=>$number)
+foreach ($drones as $module=>$number)
 {
 $dna.=$module.";".$number.":";
 }
 $dna=trim($dna,":").":";
-
+foreach ($ammo as $module=>$number)
+{
+$dna.=$module.";".$number.":";
+}
+$dna=trim($dna,":")."::";
 ?>
 <h1><? if ($shipid) {echo $shipname;} ?> fitting</h1>
 <textarea cols=60 rows=2>
