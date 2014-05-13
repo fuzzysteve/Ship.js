@@ -13,7 +13,9 @@ $med=array();
 $low=array();
 $subsystem=array();
 $ammo=array();
-$rig=array();
+$rig=array();  
+$drones=array();
+$charge=array();
 
 
 $innertypelist=array();
@@ -22,7 +24,7 @@ foreach ( $array as $value)
     $types=explode(";",$value);
     if ($types[0])
     {
-        $innertypelist[]=$types[0];
+        $innertypelist[]=filter_var($types[0],FILTER_SANITIZE_NUMBER_INT);
     }
 }
 
@@ -39,7 +41,7 @@ foreach ($innertypelist as $value)
 
     if ($row = $stmt->fetchObject())
     {
-        $typenames[$row->typeid]=$row->typename;
+        $typenames[$row->typeid]=htmlentities($row->typename, ENT_QUOTES);
         $typeslot[$row->typeid]=$row->effectid;
     }
 }
@@ -49,6 +51,8 @@ $shipid='';
 foreach ( $array as $value)
 {
     $types=explode(";",$value);
+    $types[0]=filter_var($types[0],FILTER_SANITIZE_NUMBER_INT); 
+    $types[1]=filter_var($types[1],FILTER_SANITIZE_NUMBER_INT);
     if ($types[0])
     {
         switch($typeslot[$types[0]])
@@ -72,6 +76,13 @@ foreach ( $array as $value)
         case 3772:
             $subsystem[]=array($typenames[$types[0]].":".$types[0]=>1);
             break;
+        case 18: 
+            $drones[]=array($typenames[$types[0]].":".$types[0]=>(int)$types[1]);
+            break; 
+        case 8: 
+            $charge[]=array($typenames[$types[0]].":".$types[0]=>(int)$types[1]);
+            break;
+            
         } 
     }
 }
@@ -81,7 +92,9 @@ $json["high"]=$high;
 $json["medium"]=$med;
 $json["low"]=$low;
 $json["rig"]=$rig;
-$json["subsystem"]=$subsystem;
+$json["subsystem"]=$subsystem;  
+$json["drones"]=$drones;  
+$json["charge"]=$charge;
 
 echo json_encode($json);
 
