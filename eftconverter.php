@@ -165,7 +165,7 @@ $dna=trim($dna,":")."::";
 <div id="shipdisplay"></div>
 
 <script>
-insertship('shipdisplay','<? echo $dna; ?>');
+insertShip('shipdisplay','<? echo $dna; ?>');
 </script>
 <hr>
 <a href="http://www.fuzzwork.co.uk/ships/dnagen.php">Back to the generator</a>
