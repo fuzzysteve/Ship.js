@@ -1,1 +1,8 @@
-<?php $dbh = new PDO('mysql:host=localhost;dbname=evesde', 'eveusername', 'evepassword'); ?>
+<?php
+  $dbUsername = 'dbUsername';
+  $dbPassword = "dbPassword";
+  $databaseName = "dbName";
+  $host = "localhost";
+
+  $dbh = new PDO('mysql:host='.$host.';dbname='.$databaseName, $dbUsername, $dbPassword);
+?>
