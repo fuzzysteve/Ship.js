@@ -1,7 +1,6 @@
 <html>
 <head>
 <title>Ship DNA Generator</title>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
 <script src='ship.js'></script>
 
 </head>
@@ -122,7 +121,7 @@ $dna=$shipid.":";
 
 
 foreach ($subsystem as $module=>$number)
-{ 
+{
 $dna.=$module.";".$number.":";
 }
 $dna=trim($dna,":").":";
