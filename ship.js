@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 function insertShip(div, dna) {
 
@@ -13,7 +13,7 @@ function insertShip(div, dna) {
     slot = 1,
     i = 0,
     key, num = 0,
-    json, parts, topSpace, left;
+    json, parts, topSpace, left, shipDisplay;
 
   xmlHttp.open("GET", url, true);
 
@@ -22,8 +22,9 @@ function insertShip(div, dna) {
       if (xmlHttp.status === 200) {
         json = JSON.parse(xmlHttp.responseText);
 
-        shipDisplay = "<div id='loadoutBg' style='background-image: url(http://www.fuzzwork.co.uk/ships/fitting.png); height: 420px; width: 450px; position: relative;' onclick=\"CCPEVE.showFitting('" + json.ship.dna + "')\">";
-        shipDisplay += "<div class='shippic' style='position: absolute; height: 64px; width:64px; left: 178px; top:178px;'><img src='http://image.eveonline.com/InventoryType/" + json.ship.shipid + "_64.png' title='" + json.ship.shipname + "'></div>";
+    shipDisplay = "<div id='loadoutBg' style='background-repeat: no-repeat; background-position: 150px 150px; background-image: url(http://image.eveonline.com/Render/" + json.ship.shipid + "_128.png); height: 420px; width: 450px;' onclick=\"CCPEVE.showFitting('" + json.ship.dna + "')\">";
+
+    shipDisplay += "<div class='shippic' style='height: 420px; width: 450px; position: relative; background-image: url(fitting.png);'>";
 
         if (json.hasOwnProperty("high")) {
           for (i = 0; i < json.high.length; i++) {
