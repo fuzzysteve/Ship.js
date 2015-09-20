@@ -2,32 +2,22 @@ Ship.js is a simple javascript library, to easily add ship fits to pages, where 
 
 It depends on a php page to decode the ship dna into a useable form, which can be called from anywhere. A copy runs on my personal server, and I'm not planning on taking it down any time soon.
 
-
-
 Installing this into wordpress:
-
 
 This was the initial reason for writing this code.
 
 In your theme header:
 Ensure the following exists.
 
-
-<?php wp_enqueue_script("jquery"); ?>
 <?php wp_enqueue_script("ship.js","http://www.fuzzwork.co.uk/ships/ship.js"); ?>
 <?php wp_head(); ?>
 
-
-
 If any don't, make sure to add them. (the ship.js one almost certainly won't.)
-
 
 Then, to use it:
 
 <div id="ship"></div>
 <script type="text/javascript">insertship('ship','638:19739;6:22291;5:1952;2:2024;1:2281;3:25948;3:2185;5::');
 </script>
-
-
 
 The ship in the insert ship call refers to the div before it. you can have multiple ships, by naming them differently. The long string is the ship DNA, as from http://wiki.eveonline.com/en/wiki/Ship_DNA
