@@ -109,7 +109,7 @@ jQuery.get(Url,function(json){
         for (var key  in json["drones"][i])
         {
             parts=key.split(':');
-            shipdisplay+="<div class='drone"+slot+"' style='position: absolute; height: 32px;left: "+left+"px; top: "+topspace+"px'><img src='http://image.eveonline.com/InventoryType/"+parts[1]+"_32.png' title='"+json["drones"][i][key]+" x "+parts[0]+"'></div>";
+            shipdisplay+="<div class='drone"+slot+"' style='position: absolute; height: 32px;left: "+left+"px; top: "+topspace+"px'><img src='http://images.evetech.net/types/"+parts[1]+"/icon?size=32' title='"+json["drones"][i][key]+" x "+parts[0]+"'></div>";
             topspace=topspace+35;
             slot++;
         }
@@ -122,7 +122,7 @@ jQuery.get(Url,function(json){
         for (var key  in json["charge"][i])
         {
             parts=key.split(':');
-            shipdisplay+="<div class='charge"+slot+"' style='position: absolute; height: 32px;left: "+left+"px; top: "+topspace+"px'><img src='http://image.eveonline.com/InventoryType/"+parts[1]+"_32.png' title='"+json["charge"][i][key]+" x "+parts[0]+"'></div>";
+            shipdisplay+="<div class='charge"+slot+"' style='position: absolute; height: 32px;left: "+left+"px; top: "+topspace+"px'><img src='http://images.evetech.net/types/"+parts[1]+"/icon?size=32' title='"+json["charge"][i][key]+" x "+parts[0]+"'></div>";
             topspace=topspace+35;
             slot++;
         }
