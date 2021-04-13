@@ -7,7 +7,7 @@
 </head>
 
 <body bgcolor="lightgrey" style="padding:10px">
-<?
+<?php
 require_once('db.inc.php');
 
 
@@ -158,14 +158,14 @@ $dna.=$module.";".$number.":";
 }
 $dna=trim($dna,":")."::";
 ?>
-<h1><? if ($shipid) {echo $shipname;} ?> fitting</h1>
+<h1><?php if ($shipid) {echo $shipname;} ?> fitting</h1>
 <textarea cols=60 rows=2>
-<? echo $dna; ?>
+<?php echo $dna; ?>
 </textarea>
 <div id="shipdisplay"></div>
 
 <script>
-insertship('shipdisplay','<? echo $dna; ?>');
+insertship('shipdisplay','<?php echo $dna; ?>');
 </script>
 <hr>
 <a href="http://www.fuzzwork.co.uk/ships/dnagen.php">Back to the generator</a>

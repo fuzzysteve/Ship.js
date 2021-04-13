@@ -14,7 +14,7 @@ subsystem=["left: 122px; top: 163px","left: 153px; top: 130px","left: 195px; top
 jQuery.get(Url,function(json){
 
     shipdisplay="<div id='loadoutBg' style='background-image: url(http://www.fuzzwork.co.uk/ships/fitting.png); height: 420px; width: 420px; position: relative;' onclick=\"CCPEVE.showFitting('"+json["ship"]["dna"]+"')\">";
-    shipdisplay=shipdisplay+"<div class='shippic' style='position: absolute; height: 64px; width:64px; left: 178px; top:178px;'><img src='http://image.eveonline.com/InventoryType/"+json["ship"]["shipid"]+"_64.png' title='"+json["ship"]["shipname"]+"'></div>";
+    shipdisplay=shipdisplay+"<div class='shippic' style='position: absolute; height: 64px; width:64px; left: 178px; top:178px;'><img src='http://images.evetech.net/types/"+json["ship"]["shipid"]+"/icon' title='"+json["ship"]["shipname"]+"'></div>";
 
 
     slot=1;
@@ -26,7 +26,7 @@ jQuery.get(Url,function(json){
             for (var num=0; num<json["high"][i][key];num++)
             {
                 parts=key.split(':');
-            shipdisplay+="<div class='highSlot"+slot+"' style='position: absolute; height: 32px;"+highslot[slot-1]+"'><img src='http://image.eveonline.com/InventoryType/"+parts[1]+"_32.png' title='"+parts[0]+"'></div>";
+            shipdisplay+="<div class='highSlot"+slot+"' style='position: absolute; height: 32px;"+highslot[slot-1]+"'><img src='http://images.evetech.net/types/"+parts[1]+"/icon?size=32' title='"+parts[0]+"'></div>";
             slot++;
             }
         }
@@ -42,7 +42,7 @@ jQuery.get(Url,function(json){
             for (var num=0; num<json["medium"][i][key];num++)
             {
                 parts=key.split(':');
-            shipdisplay+="<div class='medSlot"+slot+"' style='position: absolute; height: 32px;"+medslot[slot-1]+"'><img src='http://image.eveonline.com/InventoryType/"+parts[1]+"_32.png' title='"+parts[0]+"'></div>";
+            shipdisplay+="<div class='medSlot"+slot+"' style='position: absolute; height: 32px;"+medslot[slot-1]+"'><img src='http://images.evetech.net/types/"+parts[1]+"/icon?size=32' title='"+parts[0]+"'></div>";
             slot++;
             }
         }
@@ -59,7 +59,7 @@ jQuery.get(Url,function(json){
             for (var num=0; num<json["low"][i][key];num++)
             {
                 parts=key.split(':');
-            shipdisplay+="<div class='lowSlot"+slot+"' style='position: absolute; height: 32px;"+lowslot[slot-1]+"'><img src='http://image.eveonline.com/InventoryType/"+parts[1]+"_32.png' title='"+parts[0]+"'></div>";
+            shipdisplay+="<div class='lowSlot"+slot+"' style='position: absolute; height: 32px;"+lowslot[slot-1]+"'><img src='http://images.evetech.net/types/"+parts[1]+"/icon?size=32' title='"+parts[0]+"'></div>";
             slot++;
             }
         }
@@ -80,7 +80,7 @@ jQuery.get(Url,function(json){
             for (var num=0; num<json["rig"][i][key];num++)
             {
                 parts=key.split(':');
-            shipdisplay+="<div class='rigSlot"+slot+"' style='position: absolute; height: 32px;"+rigslot[slot-1]+"'><img src='http://image.eveonline.com/InventoryType/"+parts[1]+"_32.png' title='"+parts[0]+"'></div>";
+            shipdisplay+="<div class='rigSlot"+slot+"' style='position: absolute; height: 32px;"+rigslot[slot-1]+"'><img src='http://images.evetech.net/types/"+parts[1]+"/icon?size=32' title='"+parts[0]+"'></div>";
             slot++;
             }
         }
@@ -95,7 +95,7 @@ jQuery.get(Url,function(json){
             for (var num=0; num<json["subsystem"][i][key];num++)
             {
                 parts=key.split(':');
-            shipdisplay+="<div class='subsystem"+slot+"' style='position: absolute; height: 32px;"+subsystem[slot-1]+"'><img src='http://image.eveonline.com/InventoryType/"+parts[1]+"_32.png' title='"+parts[0]+"'></div>";
+            shipdisplay+="<div class='subsystem"+slot+"' style='position: absolute; height: 32px;"+subsystem[slot-1]+"'><img src='http://images.evetech.net/types/"+parts[1]+"/icon?size=32' title='"+parts[0]+"'></div>";
             slot++;
             }
         }
