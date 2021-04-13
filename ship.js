@@ -100,23 +100,39 @@ jQuery.get(Url,function(json){
             }
         }
    }
+     slot=1;
+    topspace=37;
+    left=400;
+    for (var i = 0; i < json["drones"].length; i++)
+    {
 
+        for (var key  in json["drones"][i])
+        {
+            parts=key.split(':');
+            shipdisplay+="<div class='drone"+slot+"' style='position: absolute; height: 32px;left: "+left+"px; top: "+topspace+"px'><img src='http://image.eveonline.com/InventoryType/"+parts[1]+"_32.png' title='"+json["drones"][i][key]+" x "+parts[0]+"'></div>";
+            topspace=topspace+35;
+            slot++;
+        }
+   }
+    slot=1
+    topspace=topspace+35
+       for (var i = 0; i < json["charge"].length; i++)
+    {
+
+        for (var key  in json["charge"][i])
+        {
+            parts=key.split(':');
+            shipdisplay+="<div class='charge"+slot+"' style='position: absolute; height: 32px;left: "+left+"px; top: "+topspace+"px'><img src='http://image.eveonline.com/InventoryType/"+parts[1]+"_32.png' title='"+json["charge"][i][key]+" x "+parts[0]+"'></div>";
+            topspace=topspace+35;
+            slot++;
+        }
+   }
 shipdisplay+="</div>";
 
-
-
-
-
-
-
     document.getElementById(div).innerHTML=shipdisplay;
-
-
-
+ 
 });
-
-
-
+ 
 }
 
 
